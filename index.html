@@ -8,6 +8,40 @@
   <body>
     <h1>Foreign Travel App</h1>
     <div>
+        <h2>Filter</h2>
+        <form class="ui form">
+            <div class="field">
+              <label>Language</label>
+              <input type="text" name="first-name" placeholder="First Name">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+          </form>
+          <ul id="language-filter-container">
+          </ul>
+    </div>
+    <div>
+        <h2>Countries I've Visited</h2>
+        <form id="visted-form">
+            <div>
+              <label>Country</label>
+              <input id="visited-input-field" type="text" name="first-name" placeholder="Country">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+          </form>
+        <ul id="visted-container">
+        </ul>
+    </div>
+    <div>
+        <h2>Countries I Want To Visit</h2>
+        <form id="want-to-form">
+            <div>
+              <label>Country</label>
+              <input id="want-to-input-field" type="text" name="first-name" placeholder="Country">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+          </form>
+        <ul id="want-to-container"> 
+        </ul>
     </div>
   </body>
 </html> 
