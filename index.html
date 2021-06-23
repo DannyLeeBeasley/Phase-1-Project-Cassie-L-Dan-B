@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <link rel='stylesheet' href='style.css'>
-    <script defer src='script.js'></script>
-    <title> Foreign Travel App </title>
-  </head>
-  <body>
+
+<head>
+  <link rel='stylesheet' href='style.css'>
+  <script defer src='script.js'></script>
+  <title> Foreign Travel App </title>
+</head>
+
+<body>
+  <div class="header">
     <h1>Foreign Travel App</h1>
-    <div>
-        <h2>Country Info</h2>
-        <form id='country-info-form'>
-            <div class='field'>
-              <label>Get Info</label>
-              <input id='country-info-input' type='text' name='first-name' placeholder='Country Name'>
-            </div>
-            <button class='ui button' type='submit'>Submit</button>
-          </form>
-          <h4>Name:</h4>
-          <div id='name-container'></div>
-          <h4>Flag:</h4>
-          <div id='flag-container'></div>
-          <h4>Languages:</h4>
-          <div id='language-container'>
-          </div>
-          <h4>Currency:</h4>
-          <div id='currency-container'>
-          </div>
-          <h4>Bordering Countries:</h4>
-          <div id='bordering-countries-container'>
-          </div>
+  </div>
+  <div class='big-div'>
+    <div class='main-div'>
+      <h2>Countries I Want To Visit</h2>
+      <form class='form' id='want-to-form'>
+        <div>
+          <label>Add Country</label>
+          <input id='want-to-input-field' type='text' placeholder='Country Name'>
+        </div>
+        <button class='button' type='submit'>Submit</button>
+      </form>
+      <ol id='want-to-container'>
+      </ol>
     </div>
-    <div>
-        <h2>Countries I Have Visited</h2>
-        <form id='visted-form'>
-            <div>
-              <label>Add Country</label>
-              <input id='visited-input-field' type='text' placeholder='Country Name'>
-            </div>
-            <button class='ui button' type='submit'>Submit</button>
-          </form>
-        <ol id='visted-container'>
-        </ol>
+    <div class='main-div'>
+      <h2>Country Info</h2>
+      <form class='form' id='country-info-form'>
+          <label>Get Info</label>
+          <input id='country-info-input' type='text' name='first-name' placeholder='Country Name'>
+        <button class='button' type='submit'>Submit</button>
+      </form>
+      <h4>Name:</h4>
+      <div id='name-container'></div>
+      <h4>Flag:</h4>
+      <div id='flag-container'></div>
+      <h4>Language:</h4>
+      <div id='language-container'>
+      </div>
+      <h4>Currency:</h4>
+      <div id='currency-container'>
+      </div>
+      <h4>Bordering Countries:</h4>
+      <div id='bordering-countries-container'>
+      </div>
     </div>
-    <div>
-        <h2>Countries I Want To Visit</h2>
-        <form id='want-to-form'>
-            <div>
-              <label>Add Country</label>
-              <input id='want-to-input-field' type='text' placeholder='Country Name'>
-            </div>
-            <button class='ui button' type='submit'>Submit</button>
-          </form>
-        <ol id='want-to-container'> 
-        </ol>
+    <div class='main-div'>
+      <h2>Countries I Have Visited</h2>
+      <form class='form' id='visted-form'>
+        <div>
+          <label>Add Country</label>
+          <input id='visited-input-field' type='text' placeholder='Country Name'>
+        </div>
+        <button class='button' type='submit'>Submit</button>
+      </form>
+      <ol id='visted-container'>
+      </ol>
     </div>
-  </body>
-</html> 
+  </div>
+  <!-- <div class='footer'>
+  </div> -->
+</body>
+
+</html>

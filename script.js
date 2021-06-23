@@ -41,30 +41,30 @@ wantToForm.addEventListener('submit', (e) => {
     e.target.reset()
 })
 
-function getOneCountry(countryName){
+function getOneCountry(countryName) {
     fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
-    .then(res => res.json())
-    .then(countryObj => renderCountryInfo(countryObj))
+        .then(res => res.json())
+        .then(countryObj => renderCountryInfo(countryObj))
 }
 
-function renderCountryInfo(countryObj){
+function renderCountryInfo(countryObj) {
     nameHolder.innerHTML = ''
     flagHolder.innerHTML = ''
     languagesHolder.innerHTML = ''
     currencyHolder.innerHTML = ''
     borderingCountriesHolder.innerHTML = ''
 
-    let countryNameH4 = document.createElement('h4')
+    let countryNameH5 = document.createElement('h5')
     let flagImage = document.createElement('img')
     let languagesList = document.createElement('ul')
     let currencyList = document.createElement('ul')
 
-    countryNameH4.textContent = countryObj[0].name
-    flagImage.src = countryObj[0].flag 
+    countryNameH5.textContent = countryObj[0].name
+    flagImage.src = countryObj[0].flag
     languagesList.textContent = countryObj[0].languages[0].name
     currencyList.textContent = countryObj[0].currencies[0].name
 
-    nameHolder.append(countryNameH4)
+    nameHolder.append(countryNameH5)
     flagHolder.append(flagImage)
     languagesHolder.append(languagesList)
     currencyHolder.append(currencyList)
