@@ -4,6 +4,10 @@ const visitedContainer = document.querySelector('#visted-container')
 const wantToContainer = document.querySelector('#want-to-container')
 const visitedInputField = document.querySelector('#visited-input-field')
 const wantToInputField = document.querySelector('#want-to-input-field')
+const getInfoForm = document.querySelector()
+const getInfoInput =
+const languagesHolder = 
+
 
 visitedForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -21,6 +25,8 @@ wantToForm.addEventListener('submit', (e) => {
     e.target.reset()
 })
 
+
+
 function getAllCountries(){
     fetch('https://restcountries.eu/rest/v2/all')
     .then(res => res.json())
@@ -34,6 +40,8 @@ function getOneCountry(countryName){
         countryObj => {}
     ))
 }
+
+getOneCountry()
 
 // function filterByLanguage(countryObj){
 //     if (countryObj.languages.name === "English"){
