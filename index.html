@@ -8,40 +8,48 @@
   <body>
     <h1>Foreign Travel App</h1>
     <div>
-        <h2>Filter</h2>
-        <form class="ui form">
+        <h2>Country Info</h2>
+        <form id="country-info-form">
             <div class="field">
-              <label>Language</label>
-              <input type="text" name="first-name" placeholder="First Name">
+              <label>Get Info</label>
+              <input type="text" name="first-name" placeholder="Country Name">
             </div>
             <button class="ui button" type="submit">Submit</button>
           </form>
-          <ul id="language-filter-container">
+          <h4>Flag</h4>
+          <h4>Languages</h4>
+          <ul id="language-container">
+          </ul>
+          <h4>Currency</h4>
+          <ul id="currency-container">
+          </ul>
+          <h4>Bordering Countries</h4>
+          <ul id="bordering-countries-container">
           </ul>
     </div>
     <div>
-        <h2>Countries I've Visited</h2>
+        <h2>Countries I Have Visited</h2>
         <form id="visted-form">
             <div>
-              <label>Country</label>
-              <input id="visited-input-field" type="text" name="first-name" placeholder="Country">
+              <label>Add Country</label>
+              <input id="visited-input-field" type="text" placeholder="Country Name">
             </div>
             <button class="ui button" type="submit">Submit</button>
           </form>
-        <ul id="visted-container">
-        </ul>
+        <ol id="visted-container">
+        </ol>
     </div>
     <div>
         <h2>Countries I Want To Visit</h2>
         <form id="want-to-form">
             <div>
-              <label>Country</label>
-              <input id="want-to-input-field" type="text" name="first-name" placeholder="Country">
+              <label>Add Country</label>
+              <input id="want-to-input-field" type="text" placeholder="Country Name">
             </div>
             <button class="ui button" type="submit">Submit</button>
           </form>
-        <ul id="want-to-container"> 
-        </ul>
+        <ol id="want-to-container"> 
+        </ol>
     </div>
   </body>
 </html> 

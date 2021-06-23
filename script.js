@@ -10,6 +10,7 @@ visitedForm.addEventListener('submit', (e) => {
     let addedVisitedCountry = document.createElement('li')
     addedVisitedCountry.textContent = visitedInputField.value
     visitedContainer.append(addedVisitedCountry)
+    e.target.reset()
 })
 
 wantToForm.addEventListener('submit', (e) => {
@@ -17,6 +18,7 @@ wantToForm.addEventListener('submit', (e) => {
     let addedWantToCountry = document.createElement('li')
     addedWantToCountry.textContent = wantToInputField.value
     wantToContainer.append(addedWantToCountry)
+    e.target.reset()
 })
 
 function getAllCountries(){
@@ -25,13 +27,13 @@ function getAllCountries(){
     .then(arrayOfCountries => console.log(arrayOfCountries))
 }
 
-// function getOneCountry(){
-//     fetch('https://restcountries.eu/rest/v2/all')
-//     .then(res => res.json())
-//     .then(arrayOfCountries => arrayOfCountries.forEach(
-//         countryObj => 
-//     )))
-// }
+function getOneCountry(countryName){
+    fetch(`https://restcountries.eu/rest/v2/${countryName}`)
+    .then(res => res.json())
+    .then(arrayOfCountries => arrayOfCountries.forEach(
+        countryObj => {}
+    ))
+}
 
 // function filterByLanguage(countryObj){
 //     if (countryObj.languages.name === "English"){
