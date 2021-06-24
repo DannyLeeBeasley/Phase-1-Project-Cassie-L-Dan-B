@@ -1,0 +1,21 @@
+{
+    "want": [
+      {
+        "id": 1,
+        "country_name": "Ireland"
+      },
+      {
+        "id": 2,
+        "country_name": "Spain"
+      }
+    ],
+    "visited": [
+       { "id": 1,
+        "name": "Germany"
+      },
+      {
+        "id": 2,
+        "name": "Austria"
+      }
+    ]
+  }

@@ -75,11 +75,3 @@ function renderCountryInfo(countryObj) {
     }
     )
 }
-
-// function getAllCountries(){
-//     fetch('https://restcountries.eu/rest/v2/all')
-//     .then(res => res.json())
-//     .then(arrayOfCountries => console.log(arrayOfCountries))
-// }
-
-// getAllCountries()
