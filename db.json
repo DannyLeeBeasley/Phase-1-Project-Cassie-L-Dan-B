@@ -1,21 +1,30 @@
 {
-    "want": [
-      {
-        "id": 1,
-        "country_name": "Ireland"
-      },
-      {
-        "id": 2,
-        "country_name": "Spain"
-      }
-    ],
-    "visited": [
-       { "id": 1,
-        "name": "Germany"
-      },
-      {
-        "id": 2,
-        "name": "Austria"
-      }
-    ]
-  }
+  "want": [
+    {
+      "id": 1,
+      "name": "Ireland"
+    },
+    {
+      "id": 2,
+      "name": "Spain"
+    },
+    {
+      "name": "Thailand",
+      "id": 3
+    }
+  ],
+  "visited": [
+    {
+      "id": 1,
+      "name": "Germany"
+    },
+    {
+      "id": 2,
+      "name": "Austria"
+    },
+    {
+      "name": "Jamaica",
+      "id": 3
+    }
+  ]
+}

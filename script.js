@@ -16,7 +16,26 @@ const wantToForm = document.querySelector('#want-to-form')
 const wantToInputField = document.querySelector('#want-to-input-field')
 const wantToContainer = document.querySelector('#want-to-container')
 
+// document.addEventListener('DOMContenLoaded', () => {
+//     getWantToCountries()
+// })
 
+wantToForm.addEventListener('submit', (e) => {
+    let newName = wantToInputField.value
+    fetch(`http://localhost:3000/want`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: newName
+        }),
+    }).then(res => res.json())
+        .then(countryObj => {
+            renderWantToCountries(countryObj)
+        }
+        )
+})
 
 getInfoForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -26,25 +45,38 @@ getInfoForm.addEventListener('submit', (e) => {
 })
 
 visitedForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let addedVisitedCountry = document.createElement('li')
-    addedVisitedCountry.textContent = visitedInputField.value
-    visitedContainer.append(addedVisitedCountry)
-    e.target.reset()
-})
-
-wantToForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let addedWantToCountry = document.createElement('li')
-    addedWantToCountry.textContent = wantToInputField.value
-    wantToContainer.append(addedWantToCountry)
-    e.target.reset()
+    let newName = visitedInputField.value
+    fetch(`http://localhost:3000/visited`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: newName
+        }),
+    }).then(res => res.json())
+        .then(countryObj => {
+            renderVisitedCountries(countryObj)
+        }
+        )
 })
 
 function getOneCountry(countryName) {
     fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
         .then(res => res.json())
         .then(countryObj => renderCountryInfo(countryObj))
+}
+
+function getWantToCountries() {
+    fetch('http://localhost:3000/want')
+        .then(res => res.json())
+        .then(arrayOfCountries => renderWantToCountries(arrayOfCountries))
+}
+
+function getVisitedCountries() {
+    fetch('http://localhost:3000/visited')
+        .then(res => res.json())
+        .then(arrayOfCountries => renderVisitedCountries(arrayOfCountries))
 }
 
 function renderCountryInfo(countryObj) {
@@ -75,3 +107,40 @@ function renderCountryInfo(countryObj) {
     }
     )
 }
+
+function renderWantToCountries(arrayOfCountries) {
+    arrayOfCountries.forEach(countryObj => {
+        let wantToCountryLi = document.createElement('li')
+        wantToCountryLi.textContent = countryObj.name
+        wantToContainer.append(wantToCountryLi)
+    }
+    )
+}
+
+function renderVisitedCountries(arrayOfCountries) {
+    arrayOfCountries.forEach(countryObj => {
+        let visitedCountryLi = document.createElement('li')
+        visitedCountryLi.textContent = countryObj.name
+        visitedContainer.append(visitedCountryLi)
+    }
+    )
+}
+
+getWantToCountries()
+getVisitedCountries()
+
+// visitedForm.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     let addedVisitedCountry = document.createElement('li')
+//     addedVisitedCountry.textContent = visitedInputField.value
+//     visitedContainer.append(addedVisitedCountry)
+//     e.target.reset()
+// })
+
+// wantToForm.addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     let addedWantToCountry = document.createElement('li')
+//     addedWantToCountry.textContent = wantToInputField.value
+//     wantToContainer.append(addedWantToCountry)
+//     e.target.reset()
+// })
