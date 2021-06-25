@@ -35,7 +35,7 @@ wantToForm.addEventListener('submit', (e) => {
         .then(res => res.json())
         .then(countryObj => {
             let newWantToCountryLi = document.createElement('li')
-            newWantToCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+            newWantToCountryLi.innerHTML = `<span>${countryObj.name.toUpperCase()}</span><button>X</button>`
             wantToContainer.append(newWantToCountryLi)
 
             let deleteButton = newWantToCountryLi.querySelector('button')
@@ -68,13 +68,13 @@ visitedForm.addEventListener('submit', (e) => {
     }).then(res => res.json())
         .then(countryObj => {
             let newVisitedCountryLi = document.createElement('li')
-            newVisitedCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+            newVisitedCountryLi.innerHTML = `<span>${countryObj.name.toUpperCase()}</span><button>X</button>`
             visitedContainer.append(newVisitedCountryLi)
 
             let deleteButton = newVisitedCountryLi.querySelector('button')
             deleteButton.setAttribute('style', 'background-color:#af4c4c; color: white; font-size: 9px')
             deleteButton.addEventListener('click', () => {
-                deleteWantToCountry(countryObj, newVisitedCountryLi)
+                deleteVisitedCountry(countryObj, newVisitedCountryLi)
             }
             )
         }
@@ -106,7 +106,7 @@ function getVisitedCountries() {
 function renderWantToCountries(arrayOfCountries) {
     arrayOfCountries.forEach(countryObj => {
         let wantToCountryLi = document.createElement('li')
-        wantToCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+        wantToCountryLi.innerHTML = `<span>${countryObj.name.toUpperCase()}</span><button>X</button>`
         wantToContainer.append(wantToCountryLi)
 
         let deleteButton = wantToCountryLi.querySelector('button')
@@ -150,7 +150,7 @@ function renderCountryInfo(countryObj) {
 function renderVisitedCountries(arrayOfCountries) {
     arrayOfCountries.forEach(countryObj => {
         let visitedCountryLi = document.createElement('li')
-        visitedCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+        visitedCountryLi.innerHTML = `<span>${countryObj.name.toUpperCase()}</span><button>X</button>`
         visitedContainer.append(visitedCountryLi)
 
         let deleteButton = visitedCountryLi.querySelector('button')

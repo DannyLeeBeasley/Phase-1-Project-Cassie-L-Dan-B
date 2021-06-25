@@ -15,37 +15,9 @@
     {
       "name": "Peru",
       "id": 4
-    },
-    {
-      "name": "Chile",
-      "id": 5
-    },
-    {
-      "name": "Aregentina",
-      "id": 6
-    },
-    {
-      "name": "Thailand",
-      "id": 7
-    },
-    {
-      "name": "Vietnam",
-      "id": 8
-    },
-    {
-      "name": "Cambodia",
-      "id": 9
     }
   ],
   "visited": [
-    {
-      "name": "Mexico",
-      "id": 1
-    },
-    {
-      "name": "Germany",
-      "id": 2
-    },
     {
       "name": "Switzerland",
       "id": 3
@@ -75,7 +47,7 @@
       "id": 9
     },
     {
-      "name": "Morocco",
+      "name": "Mexico",
       "id": 10
     }
   ]
