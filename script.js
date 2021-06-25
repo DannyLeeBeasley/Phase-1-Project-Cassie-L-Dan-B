@@ -1,3 +1,14 @@
+// WANT TO
+const wantToForm = document.querySelector('#want-to-form')
+const wantToInputField = document.querySelector('#want-to-input-field')
+const wantToContainer = document.querySelector('#want-to-container')
+
+// VISITED
+const visitedForm = document.querySelector('#visted-form')
+const visitedInputField = document.querySelector('#visited-input-field')
+const visitedContainer = document.querySelector('#visted-container')
+
+//GET INFO
 const getInfoForm = document.querySelector('#country-info-form')
 const getInfoInput = document.querySelector('#country-info-input')
 
@@ -8,19 +19,9 @@ const currencyHolder = document.querySelector('#currency-container')
 const borderingCountriesHolder = document.querySelector('#bordering-countries-container')
 
 
-const visitedForm = document.querySelector('#visted-form')
-const visitedInputField = document.querySelector('#visited-input-field')
-const visitedContainer = document.querySelector('#visted-container')
-
-const wantToForm = document.querySelector('#want-to-form')
-const wantToInputField = document.querySelector('#want-to-input-field')
-const wantToContainer = document.querySelector('#want-to-container')
-
-// document.addEventListener('DOMContenLoaded', () => {
-//     getWantToCountries()
-// })
-
+//EVENT LISTENERS
 wantToForm.addEventListener('submit', (e) => {
+    e.preventDefault()
     let newName = wantToInputField.value
     fetch(`http://localhost:3000/want`, {
         method: "POST",
@@ -30,11 +31,20 @@ wantToForm.addEventListener('submit', (e) => {
         body: JSON.stringify({
             name: newName
         }),
-    }).then(res => res.json())
+    })
+        .then(res => res.json())
         .then(countryObj => {
-            renderWantToCountries(countryObj)
-        }
-        )
+            let newWantToCountryLi = document.createElement('li')
+            newWantToCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+            wantToContainer.append(newWantToCountryLi)
+
+            let deleteButton = newWantToCountryLi.querySelector('button')
+            deleteButton.setAttribute('style', 'background-color:#af4c4c; color: white; font-size: 9px')
+            deleteButton.addEventListener('click', () => {
+                deleteWantToCountry(countryObj, newWantToCountryLi)
+            })
+        })
+    e.target.reset()
 })
 
 getInfoForm.addEventListener('submit', (e) => {
@@ -45,6 +55,7 @@ getInfoForm.addEventListener('submit', (e) => {
 })
 
 visitedForm.addEventListener('submit', (e) => {
+    e.preventDefault()
     let newName = visitedInputField.value
     fetch(`http://localhost:3000/visited`, {
         method: "POST",
@@ -56,10 +67,28 @@ visitedForm.addEventListener('submit', (e) => {
         }),
     }).then(res => res.json())
         .then(countryObj => {
-            renderVisitedCountries(countryObj)
+            let newVisitedCountryLi = document.createElement('li')
+            newVisitedCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+            visitedContainer.append(newVisitedCountryLi)
+
+            let deleteButton = newVisitedCountryLi.querySelector('button')
+            deleteButton.setAttribute('style', 'background-color:#af4c4c; color: white; font-size: 9px')
+            deleteButton.addEventListener('click', () => {
+                deleteWantToCountry(countryObj, newVisitedCountryLi)
+            }
+            )
         }
         )
+    e.target.reset()
 })
+
+
+//GET COUNTRIES
+function getWantToCountries() {
+    fetch('http://localhost:3000/want')
+        .then(res => res.json())
+        .then(arrayOfCountries => renderWantToCountries(arrayOfCountries))
+}
 
 function getOneCountry(countryName) {
     fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
@@ -67,16 +96,26 @@ function getOneCountry(countryName) {
         .then(countryObj => renderCountryInfo(countryObj))
 }
 
-function getWantToCountries() {
-    fetch('http://localhost:3000/want')
-        .then(res => res.json())
-        .then(arrayOfCountries => renderWantToCountries(arrayOfCountries))
-}
-
 function getVisitedCountries() {
     fetch('http://localhost:3000/visited')
         .then(res => res.json())
         .then(arrayOfCountries => renderVisitedCountries(arrayOfCountries))
+}
+
+//RENDER COUNTRIES
+function renderWantToCountries(arrayOfCountries) {
+    arrayOfCountries.forEach(countryObj => {
+        let wantToCountryLi = document.createElement('li')
+        wantToCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
+        wantToContainer.append(wantToCountryLi)
+
+        let deleteButton = wantToCountryLi.querySelector('button')
+        deleteButton.setAttribute('style', 'background-color:#af4c4c;color: white;font-size: 9px')
+        deleteButton.addEventListener('click', () => {
+            deleteWantToCountry(countryObj, wantToCountryLi)
+        })
+    }
+    )
 }
 
 function renderCountryInfo(countryObj) {
@@ -108,39 +147,38 @@ function renderCountryInfo(countryObj) {
     )
 }
 
-function renderWantToCountries(arrayOfCountries) {
-    arrayOfCountries.forEach(countryObj => {
-        let wantToCountryLi = document.createElement('li')
-        wantToCountryLi.textContent = countryObj.name
-        wantToContainer.append(wantToCountryLi)
-    }
-    )
-}
-
 function renderVisitedCountries(arrayOfCountries) {
     arrayOfCountries.forEach(countryObj => {
         let visitedCountryLi = document.createElement('li')
-        visitedCountryLi.textContent = countryObj.name
+        visitedCountryLi.innerHTML = `<span>${countryObj.name}</span><button>X</button>`
         visitedContainer.append(visitedCountryLi)
+
+        let deleteButton = visitedCountryLi.querySelector('button')
+        deleteButton.setAttribute('style', 'background-color:#af4c4c;color: white;font-size: 9px')
+        deleteButton.addEventListener('click', () => {
+            deleteVisitedCountry(countryObj, visitedCountryLi)
+        })
     }
     )
 }
 
+//DELETE COUNTRIES
+function deleteWantToCountry(countryObj, wantToCountryLi) {
+    fetch(`http://localhost:3000/want/${countryObj.id}`, {
+        method: "DELETE"
+    })
+        .then(res => res.json())
+        .then(wantToCountryLi.remove())
+}
+
+function deleteVisitedCountry(countryObj, visitedCountryLi) {
+    fetch(`http://localhost:3000/visited/${countryObj.id}`, {
+        method: "DELETE"
+    })
+        .then(res => res.json())
+        .then(visitedCountryLi.remove())
+}
+
+// FUNCTION INVOCATIONS
 getWantToCountries()
 getVisitedCountries()
-
-// visitedForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     let addedVisitedCountry = document.createElement('li')
-//     addedVisitedCountry.textContent = visitedInputField.value
-//     visitedContainer.append(addedVisitedCountry)
-//     e.target.reset()
-// })
-
-// wantToForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     let addedWantToCountry = document.createElement('li')
-//     addedWantToCountry.textContent = wantToInputField.value
-//     wantToContainer.append(addedWantToCountry)
-//     e.target.reset()
-// })

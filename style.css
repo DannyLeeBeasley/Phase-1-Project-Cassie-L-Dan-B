@@ -13,23 +13,7 @@
     text-align: center;
     font-size: 35px;
   }
-  
-  /* Create three equal columns that floats next to each other */
-  .main-div {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-  }
-  
-  /* Clear floats after the columns */
-  .big-div:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Style the footer */
+
   .footer {
     background-color: #267980;
     padding: 10px;
@@ -46,6 +30,38 @@
 
   img {
       max-width: 100%;
+  }
+
+  .button {
+    background-color: #4D978C;
+    border: none;
+    color: white;
+    padding: 5px 11px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #267980;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  .button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  /* Create three equal columns that floats next to each other */
+  .main-div {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .big-div:after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
   /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
